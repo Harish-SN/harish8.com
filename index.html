@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Harish Sudalaimani</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+<style>
+  /* ============================================
+     BEIGE COMPUTER · GREEN CRT SCREEN
+     ============================================ */
+ 
+  :root {
+    --case:      #d8d2c4;   /* beige plastic */
+    --case-edge: #b4aea3;   /* darker beige bezel */
+    --case-foot: #9f998f;   /* base foot */
+    --bezel:     #8d8d8d;   /* gray monitor bezel */
+    --header:    #bdbdbd;   /* light gray header bar */
+    --screen:    #122012;   /* dark CRT background */
+    --green:     #83ff92;   /* phosphor green text */
+    --green-d:   rgba(131, 255, 146, 0.7);
+    --green-dd:  rgba(131, 255, 146, 0.5);
+    --green-f:   rgba(131, 255, 146, 0.4);
+    --green-fa:  rgba(131, 255, 146, 0.1);
+  }
+ 
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+ 
+  html, body {
+    background: #0a0a0a;
+    min-height: 100vh;
+    font-family: 'VT323', 'Courier New', monospace;
+    color: var(--green);
+  }
+ 
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+ 
+  .wrap {
+    width: 100%;
+    max-width: 1400px;
+  }
+ 
+  /* ======== COMPUTER (beige plastic body) ======== */
+  .computer {
+    background: var(--case);
+    border-radius: 28px;
+    border: 6px solid var(--case-edge);
+    padding: 20px;
+    box-shadow:
+      0 30px 60px rgba(0, 0, 0, 0.7),
+      inset 0 2px 0 rgba(255, 255, 255, 0.4),
+      inset 0 -2px 0 rgba(0, 0, 0, 0.15);
+  }
+ 
+  /* ======== SCREEN (gray bezel, dark inside) ======== */
+  .screen {
+    border: 10px solid var(--bezel);
+    border-radius: 18px;
+    background: var(--screen);
+    overflow: hidden;
+    /* phosphor glow on every character inside */
+  }
+ 
+  /* HEADER BAR — traffic light + label */
+  .header {
+    background: var(--header);
+    padding: 8px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    color: #000;
+  }
+  .dots {
+    display: flex;
+    gap: 8px;
+  }
+  .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--bezel);
+  }
+  .term-label {
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    color: #000;
+  }
+ 
+  /* CONTENT AREA */
+  .content {
+    padding: 28px 32px 36px;
+    color: var(--green);
+    text-shadow:
+      0 0 1px rgba(131, 255, 146, 0.7),
+      0 0 6px rgba(131, 255, 146, 0.3);
+  }
+ 
+  /* gentle CRT scanlines on the screen only */
+  .screen {
+    position: relative;
+  }
+  .screen::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.10) 0px,
+      rgba(0, 0, 0, 0.10) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+  }
+ 
+  /* ======== HERO ======== */
+  .hero h1 {
+    font-size: clamp(48px, 8vw, 88px);
+    line-height: 1;
+    font-weight: normal;
+    letter-spacing: 0.02em;
+  }
+  .hero .role {
+    font-size: 22px;
+    margin-top: 10px;
+    opacity: 0.85;
+  }
+  .hero .stack {
+    font-size: 19px;
+    margin-top: 4px;
+    opacity: 0.7;
+  }
+ 
+  /* ======== TWO-COLUMN GRID ======== */
+  .grid {
+    margin-top: 36px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+  .col { display: flex; flex-direction: column; gap: 32px; }
+ 
+  section .label {
+    font-size: 19px;
+    margin-bottom: 12px;
+    opacity: 0.6;
+  }
+ 
+  /* ======== ABOUT ======== */
+  .about p {
+    font-size: 21px;
+    line-height: 1.5;
+    opacity: 0.92;
+    margin-bottom: 12px;
+  }
+  .about p:last-child { margin-bottom: 0; }
+ 
+  /* ======== EXPERIENCE & PROJECTS ======== */
+  .item {
+    margin-bottom: 18px;
+  }
+  .item:last-child { margin-bottom: 0; }
+ 
+  .item-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .item-head h3 {
+    font-size: 24px;
+    font-weight: normal;
+    letter-spacing: 0.01em;
+  }
+  .item-head .meta {
+    opacity: 0.6;
+    font-size: 17px;
+  }
+  .item p {
+    opacity: 0.85;
+    font-size: 19px;
+    margin-top: 4px;
+    line-height: 1.45;
+  }
+  .item ul {
+    list-style: none;
+    margin-top: 6px;
+    padding: 0;
+  }
+  .item ul li {
+    font-size: 17px;
+    line-height: 1.45;
+    opacity: 0.85;
+    padding-left: 14px;
+    position: relative;
+    margin-bottom: 4px;
+  }
+  .item ul li::before {
+    content: '>';
+    position: absolute;
+    left: 0;
+    opacity: 0.6;
+  }
+ 
+  /* project links */
+  .item-head a {
+    color: var(--green);
+    text-decoration: none;
+    border-bottom: 1px dashed var(--green-f);
+  }
+  .item-head a:hover {
+    border-bottom-style: solid;
+    background: var(--green-fa);
+  }
+ 
+  /* ======== CERTS ======== */
+  .certs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 12px;
+    font-size: 18px;
+  }
+  .certs a {
+    color: var(--green);
+    text-decoration: none;
+    border: 1px solid var(--green-f);
+    padding: 4px 10px;
+    border-radius: 4px;
+    transition: background 0.15s;
+  }
+  .certs a:hover {
+    background: var(--green-fa);
+  }
+ 
+  /* ======== CONTACT BUTTONS ======== */
+  .contact-btns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .cbtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    border: 1px solid var(--green-f);
+    border-radius: 6px;
+    font-size: 18px;
+    color: var(--green);
+    text-decoration: none;
+    transition: background 0.15s;
+  }
+  .cbtn:hover {
+    background: var(--green-fa);
+  }
+ 
+  /* ======== COMPUTER BASE (foot) ======== */
+  .base {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  .foot {
+    width: 180px;
+    height: 16px;
+    background: var(--case-foot);
+    border-radius: 999px;
+    box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.25), 0 4px 0 rgba(0, 0, 0, 0.2);
+  }
+  .stand {
+    width: 4px;
+    height: 22px;
+    background: var(--case-foot);
+    margin: 0 auto;
+    margin-top: -1px;
+  }
+ 
+  /* ======== RESPONSIVE ======== */
+  @media (max-width: 800px) {
+    body { padding: 8px; }
+    .computer { padding: 10px; border-width: 4px; border-radius: 18px; }
+    .screen { border-width: 6px; border-radius: 12px; }
+    .content { padding: 18px 16px 24px; }
+    .grid { grid-template-columns: 1fr; gap: 28px; }
+    .hero h1 { font-size: 44px; }
+    .term-label { font-size: 11px; }
+  }
+</style>
+</head>
+<body>
+ 
+<div class="wrap">
+ 
+  <!-- BEIGE COMPUTER CASE -->
+  <div class="computer">
+ 
+    <!-- SCREEN (gray bezel) -->
+    <div class="screen">
+ 
+      <!-- HEADER (gray strip with traffic-light dots) -->
+      <div class="header">
+        <div class="dots">
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </div>
+        <span class="term-label">TERMINAL</span>
+      </div>
+ 
+      <!-- CONTENT inside the CRT -->
+      <div class="content">
+ 
+        <!-- HERO -->
+        <div class="hero">
+          <h1>Harish Sudalaimani</h1>
+          <p class="role">Software Engineer</p>
+          <p class="stack">Cloud · Kubernetes · Linux · Terraform</p>
+        </div>
+ 
+        <!-- TWO COLUMNS -->
+        <div class="grid">
+ 
+          <!-- LEFT COLUMN -->
+          <div class="col">
+ 
+            <!-- ABOUT -->
+            <section class="about">
+              <div class="label">&gt; about_me</div>
+              <p>Kubernetes-focused Cloud &amp; DevOps Engineer specializing in building and operating
+                scalable, production-grade platforms on AWS. Strong background in container orchestration,
+                Infrastructure as Code, and GitOps-driven CI/CD pipelines.</p>
+            </section>
+ 
+            <!-- EXPERIENCE -->
+            <section>
+              <div class="label">&gt; experience</div>
+ 
+              <div class="item">
+                <div class="item-head">
+                  <h3>Xambook</h3>
+                  <span class="meta">May 2024 — Apr 2026</span>
+                </div>
+                <p>Cloud &amp; DevOps Engineer building production AWS platforms.</p>
+              </div>
+ 
+              <div class="item">
+                <div class="item-head">
+                  <h3>Independent Consulting</h3>
+                  <span class="meta">May 2021 — Apr 2024</span>
+                </div>
+                <p>Freelance DevOps &amp; Cloud Engineer.</p>
+              </div>
+ 
+            </section>
+ 
+          </div>
+ 
+          <!-- RIGHT COLUMN -->
+          <div class="col">
+ 
+            <!-- PROJECTS -->
+            <section>
+              <div class="label">&gt; projects</div>
+ 
+              <div class="item">
+                <div class="item-head">
+                  <h3><a href="https://kwantumzero.com/" target="_blank">KwantumOS</a></h3>
+                  <span class="meta">live</span>
+                </div>
+                <p>An OS for learning quantum computing, with preinstalled simulators and guided learning paths.</p>
+              </div>
+ 
+              <div class="item">
+                <div class="item-head">
+                  <h3><a href="https://pypi.org/project/brewbar/" target="_blank">brewbar</a></h3>
+                  <span class="meta">PyPI</span>
+                </div>
+                <p>A lightweight Python progress-bar library with iterator-based API. MIT licensed, modern packaging via pyproject.toml.</p>
+              </div>
+ 
+            </section>
+ 
+            <!-- CERTS -->
+            <section>
+              <div class="label">&gt; certs</div>
+              <div class="certs">
+                <a href="https://www.credly.com/badges/ded4dfbc-ca13-45f9-83f7-ddaffe6eea59/public_url" target="_blank">[ AWS-SAP ]</a>
+                <a href="https://www.credly.com/badges/61884d38-f8ea-47d8-9a4e-4f8cf261c444/public_url" target="_blank">[ CKA ]</a>
+                <a href="https://www.credly.com/badges/3746f024-c3b0-473e-b0cc-808f18075c35/public_url" target="_blank">[ CKAD ]</a>
+                <a href="https://www.credly.com/badges/d3e952e5-8c80-4f81-8dfb-4ed896cbc677/public_url" target="_blank">[ KCSA ]</a>
+                <a href="https://www.credly.com/badges/547bdfe4-b9a7-42b1-bdcb-3acc2332f7be/public_url" target="_blank">[ KCNA ]</a>
+                <a href="https://www.credly.com/badges/e2dee9fd-c02f-40db-83a5-67af7e420994/public_url" target="_blank">[ TERRAFORM ]</a>
+              </div>
+            </section>
+ 
+            <!-- CONTACT -->
+            <section>
+              <div class="label">&gt; contact</div>
+              <div class="contact-btns">
+                <a class="cbtn" href="mailto:snharish85@gmail.com">[ email ]</a>
+                <a class="cbtn" href="https://github.com/Harish-SN" target="_blank">[ github ]</a>
+                <a class="cbtn" href="https://linkedin.com/in/harishsudalaimani" target="_blank">[ linkedin ]</a>
+                <a class="cbtn" href="https://flyingbunny8.gumroad.com" target="_blank">[ gumroad ]</a>
+                <a class="cbtn" href="https://discordapp.com/users/1341650829115002911" target="_blank">[ discord ]</a>
+              </div>
+            </section>
+ 
+          </div>
+        </div>
+ 
+      </div>
+    </div>
+ 
+    <!-- BASE / FOOT -->
+    <div class="stand"></div>
+    <div class="base"><div class="foot"></div></div>
+  </div>
+ 
+</div>
+ 
+</body>
+</html>
