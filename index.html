@@ -3,349 +3,998 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Harish Sudalaimani</title>
+
+  <meta
+    name="description"
+    content="Harish Sudalaimani — Cloud & DevOps Engineer. Kubernetes, AWS, Infrastructure as Code, Platform Engineering, and quantum technology."
+  >
+
+  <title>Harish Sudalaimani // Profile</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
   <style>
+    :root {
+      --bg: #0a0a08;
+      --panel: #10100d;
+      --text: #d8d5bd;
+      --muted: #858373;
+      --dim: #555449;
+      --accent: #c6ff00;
+      --border: #34342c;
+      --hover: #181a11;
+    }
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
-    html, body {
-      font-family: 'Courier Prime', 'Courier New', monospace;
-      background: #e8e8e8;
-      color: #333;
-      line-height: 1.6;
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
-      padding: 40px 20px;
+      min-height: 100vh;
+      padding: 32px 18px;
+
+      background:
+        linear-gradient(
+          rgba(255, 255, 255, 0.012) 1px,
+          transparent 1px
+        ),
+        #0a0a08;
+
+      background-size: 100% 4px;
+
+      color: var(--text);
+
+      font-family:
+        "IBM Plex Mono",
+        "Courier New",
+        monospace;
+
+      font-size: 15px;
+      line-height: 1.7;
     }
 
-    .container {
-      max-width: 800px;
+    ::selection {
+      background: var(--accent);
+      color: var(--bg);
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .terminal {
+      width: 100%;
+      max-width: 880px;
       margin: 0 auto;
-      background: #f5f5f5;
-      border: 2px solid #999;
-      padding: 40px;
+
+      border: 1px solid var(--border);
+      background: var(--panel);
+
+      box-shadow:
+        0 0 0 1px #050505,
+        0 20px 80px rgba(0, 0, 0, 0.45);
     }
 
-    /* Header */
+    /* ==============================
+       TERMINAL WINDOW BAR
+       ============================== */
+
+    .terminal-bar {
+      min-height: 42px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      padding: 0 14px;
+
+      border-bottom: 1px solid var(--border);
+
+      background: #151510;
+
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .terminal-dots {
+      display: flex;
+      gap: 7px;
+    }
+
+    .dot {
+      width: 9px;
+      height: 9px;
+
+      border: 1px solid var(--muted);
+      border-radius: 50%;
+    }
+
+    .terminal-status {
+      color: var(--accent);
+    }
+
+    /* ==============================
+       MAIN CONTENT
+       ============================== */
+
+    .content {
+      padding: 42px;
+    }
+
+    .prompt {
+      margin-bottom: 8px;
+
+      color: var(--accent);
+
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+    }
+
     h1 {
-      font-size: 2.5rem;
-      margin-bottom: 5px;
-      font-weight: bold;
-      border-bottom: 3px solid #999;
-      padding-bottom: 10px;
-      color: #444;
-    }
+      margin-bottom: 8px;
 
-    h2 {
-      font-size: 1.3rem;
-      margin-top: 30px;
-      margin-bottom: 15px;
-      font-weight: bold;
-      text-decoration: underline;
-      color: #555;
+      color: #f0eedc;
+
+      font-size: clamp(2rem, 7vw, 3.7rem);
+      line-height: 1.05;
+      letter-spacing: -0.06em;
+
+      text-transform: uppercase;
     }
 
     .subtitle {
+      color: var(--text);
+
       font-size: 1rem;
-      margin-bottom: 3px;
-      color: #555;
+      font-weight: 600;
     }
 
     .stack {
-      font-size: 0.9rem;
-      margin-bottom: 30px;
-      color: #666;
+      margin-top: 4px;
+
+      color: var(--muted);
+
+      font-size: 0.82rem;
     }
 
-    /* Sections */
+    .cursor {
+      display: inline-block;
+
+      width: 8px;
+      height: 1em;
+
+      margin-left: 5px;
+
+      background: var(--accent);
+
+      vertical-align: -2px;
+
+      animation: blink 1s steps(1) infinite;
+    }
+
+    @keyframes blink {
+      50% {
+        opacity: 0;
+      }
+    }
+
+    /* ==============================
+       ABOUT
+       ============================== */
+
     .about {
-      margin-bottom: 30px;
-      padding: 15px;
-      border-left: 3px solid #999;
-      background: #ececec;
+      margin: 34px 0;
+
+      padding: 18px 20px;
+
+      border-left: 2px solid var(--accent);
+
+      background: #0c0d09;
+    }
+
+    .about-label {
+      display: block;
+
+      margin-bottom: 8px;
+
+      color: var(--accent);
+
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
     }
 
     .about p {
-      margin: 0;
-      color: #444;
+      color: var(--text);
+
+      font-size: 0.92rem;
     }
 
-    /* Experience */
+    /* ==============================
+       SECTIONS
+       ============================== */
+
+    section {
+      margin-top: 46px;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      margin-bottom: 22px;
+
+      color: var(--accent);
+
+      font-size: 0.82rem;
+      letter-spacing: 0.12em;
+
+      text-decoration: none;
+    }
+
+    .section-title::before {
+      content: "./";
+      color: var(--muted);
+    }
+
+    .section-title::after {
+      content: "";
+
+      flex: 1;
+
+      height: 1px;
+
+      background: var(--border);
+    }
+
+    /* ==============================
+       EXPERIENCE
+       ============================== */
+
     .exp-item {
-      margin-bottom: 20px;
-      padding: 0;
+      position: relative;
+
+      margin-bottom: 28px;
+      padding-left: 20px;
+
+      border-left: 1px solid var(--border);
+    }
+
+    .exp-item::before {
+      content: "";
+
+      position: absolute;
+      top: 9px;
+      left: -4px;
+
+      width: 7px;
+      height: 7px;
+
+      background: var(--accent);
     }
 
     .exp-item h3 {
-      font-size: 1.1rem;
-      font-weight: bold;
       margin-bottom: 2px;
-      color: #333;
+
+      color: #e7e5d3;
+
+      font-size: 1rem;
     }
 
-    .exp-item a {
-      color: #333;
-      text-decoration: underline;
+    .exp-item h3 a {
+      text-decoration: none;
     }
 
-    .exp-item a:hover {
-      background: #ddd;
+    .exp-item h3 a:hover {
+      color: var(--accent);
     }
 
     .exp-meta {
-      font-size: 0.9rem;
-      color: #777;
-      margin-bottom: 5px;
+      margin-bottom: 7px;
+
+      color: var(--muted);
+
+      font-size: 0.78rem;
     }
 
     .exp-desc {
-      font-size: 0.95rem;
-      margin-left: 10px;
-      color: #555;
+      max-width: 700px;
+
+      color: #aaa897;
+
+      font-size: 0.87rem;
     }
 
-    /* Skills */
-    .skills-list {
+    /* ==============================
+       SKILLS + CERTIFICATIONS
+       ============================== */
+
+    .tag-list {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
+    }
+
+    .tag {
+      padding: 5px 9px;
+
+      border: 1px solid var(--border);
+
+      background: #0d0d0a;
+
+      color: #aaa897;
+
+      font-size: 0.76rem;
+
+      transition:
+        border-color 0.15s ease,
+        color 0.15s ease,
+        background 0.15s ease;
+    }
+
+    a.tag {
+      text-decoration: none;
+    }
+
+    .tag:hover {
+      border-color: var(--accent);
+
+      background: var(--hover);
+
+      color: var(--accent);
+    }
+
+    /* ==============================
+       PROJECTS
+       ============================== */
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+
+      gap: 12px;
+    }
+
+    .project {
+      min-height: 180px;
+
+      padding: 18px;
+
+      border: 1px solid var(--border);
+
+      background: #0d0d0a;
+
+      transition:
+        transform 0.15s ease,
+        border-color 0.15s ease,
+        background 0.15s ease;
+    }
+
+    .project:hover {
+      transform: translateY(-2px);
+
+      border-color: #686957;
+
+      background: #11120c;
+    }
+
+    .project-number {
+      display: block;
+
       margin-bottom: 20px;
+
+      color: var(--dim);
+
+      font-size: 0.7rem;
     }
 
-    .skill {
-      border: 1px solid #999;
-      padding: 4px 8px;
-      background: #e8e8e8;
-      font-size: 0.9rem;
-      color: #333;
-    }
-
-    .skill:hover {
-      background: #ccc;
-      color: #333;
-    }
-
-    /* Projects */
-    .proj-item {
-      margin-bottom: 15px;
-      padding: 10px;
-      border: 1px solid #999;
-      background: #f0f0f0;
-    }
-
-    .proj-item h3 {
-      font-size: 1rem;
-      font-weight: bold;
+    .project h3 {
       margin-bottom: 3px;
-      color: #333;
+
+      font-size: 1rem;
     }
 
-    .proj-item a {
-      color: #333;
+    .project h3 a {
+      color: var(--accent);
+
+      text-decoration: none;
+    }
+
+    .project h3 a:hover {
       text-decoration: underline;
     }
 
-    .proj-item a:hover {
-      background: #ddd;
+    .project-type {
+      margin-bottom: 12px;
+
+      color: var(--muted);
+
+      font-size: 0.72rem;
+
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
     }
 
-    .proj-type {
-      font-size: 0.85rem;
-      color: #777;
-      margin-bottom: 5px;
+    .project-desc {
+      color: #aaa897;
+
+      font-size: 0.82rem;
     }
 
-    .proj-desc {
-      font-size: 0.9rem;
-      color: #555;
+    /* ==============================
+       COMMUNITY
+       ============================== */
+
+    .community-item {
+      display: grid;
+      grid-template-columns: 70px 1fr;
+
+      gap: 15px;
+
+      padding: 13px 0;
+
+      border-bottom: 1px dashed var(--border);
     }
 
-    /* Certificates */
-    .cert-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 20px;
+    .community-year {
+      color: var(--accent);
+
+      font-size: 0.78rem;
     }
 
-    .cert {
-      border: 1px solid #999;
-      padding: 6px 10px;
-      background: #e8e8e8;
-      font-size: 0.85rem;
-      text-decoration: none;
-      color: #333;
+    .community-name {
+      color: var(--text);
+
+      font-size: 0.87rem;
+      font-weight: 600;
     }
 
-    .cert:hover {
-      background: #ccc;
-      color: #333;
+    .community-desc {
+      margin-top: 3px;
+
+      color: var(--muted);
+
+      font-size: 0.78rem;
     }
 
-    /* Contact */
-    .contact-section {
-      margin-top: 30px;
-      padding-top: 20px;
-      border-top: 2px solid #999;
-    }
+    /* ==============================
+       CONTACT
+       ============================== */
 
     .contact-links {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 8px;
     }
 
     .contact-links a {
-      padding: 6px 12px;
-      border: 1px solid #999;
-      background: #e8e8e8;
+      padding: 7px 11px;
+
+      border: 1px solid var(--border);
+
+      color: var(--muted);
+
+      font-size: 0.75rem;
+
       text-decoration: none;
-      color: #333;
-      font-size: 0.9rem;
+
+      transition:
+        border-color 0.15s ease,
+        color 0.15s ease;
+    }
+
+    .contact-links a::before {
+      content: "> ";
+      color: var(--accent);
     }
 
     .contact-links a:hover {
-      background: #ccc;
-      color: #333;
+      border-color: var(--accent);
+      color: var(--accent);
     }
 
-    /* Divider */
-    hr {
-      margin: 25px 0;
-      border: none;
-      border-top: 1px dashed #999;
+    /* ==============================
+       FOOTER
+       ============================== */
+
+    footer {
+      margin-top: 50px;
+      padding-top: 20px;
+
+      border-top: 1px solid var(--border);
+
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+
+      color: var(--dim);
+
+      font-size: 0.7rem;
     }
 
-    @media (max-width: 600px) {
-      .container {
-        padding: 20px;
+    .online {
+      color: var(--accent);
+    }
+
+    /* ==============================
+       MOBILE
+       ============================== */
+
+    @media (max-width: 650px) {
+      body {
+        padding: 12px;
       }
 
-      h1 {
-        font-size: 1.8rem;
+      .content {
+        padding: 28px 20px;
       }
 
-      h2 {
-        font-size: 1.1rem;
+      .terminal-bar {
+        font-size: 0.65rem;
+      }
+
+      .terminal-path {
+        display: none;
+      }
+
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .community-item {
+        grid-template-columns: 55px 1fr;
+      }
+
+      footer {
+        flex-direction: column;
+        gap: 5px;
       }
     }
   </style>
 </head>
+
 <body>
-  <div class="container">
-    <h1>HARISH SUDALAIMANI</h1>
-    <p class="subtitle">Cloud & DevOps Engineer</p>
-    <p class="stack">Kubernetes • AWS • Infrastructure as Code • Platform Engineering</p>
 
-    <div class="about">
-      <p>Kubernetes-focused Cloud & DevOps Engineer specializing in building and operating scalable, production-grade platforms on AWS. Strong background in container orchestration, Infrastructure as Code, and GitOps-driven CI/CD pipelines.</p>
-    </div>
+  <main class="terminal">
 
-    <hr>
+    <div class="terminal-bar">
 
-    <h2>EXPERIENCE</h2>
-
-    <div class="exp-item">
-      <h3><a href="https://meetstream.ai/" target="_blank">MeetStream.ai</a></h3>
-      <div class="exp-meta">Cloud & DevOps Engineer | Jun 2026 — Present</div>
-      <div class="exp-desc">Building and managing cloud infrastructure with focus on scalability and reliability.</div>
-    </div>
-
-    <div class="exp-item">
-      <h3><a href="https://xambook.com/" target="_blank">Xambook</a></h3>
-      <div class="exp-meta">Cloud & DevOps Engineer | Apr 2023 — May 2026</div>
-      <div class="exp-desc">Built production AWS platforms with Kubernetes, GitHub Actions, and Argo CD. Focused on infrastructure automation and CI/CD pipeline optimization.</div>
-    </div>
-
-    <div class="exp-item">
-      <h3>Freelance</h3>
-      <div class="exp-meta">Cloud & DevOps Consultant | Mar 2020 — Feb 2023</div>
-      <div class="exp-desc">Provided consulting services for cloud infrastructure, container orchestration, and deployment automation across multiple clients.</div>
-    </div>
-
-    <hr>
-
-    <h2>CERTIFICATIONS</h2>
-    <div class="cert-list">
-      <a class="cert" href="https://www.credly.com/badges/ded4dfbc-ca13-45f9-83f7-ddaffe6eea59/public_url" target="_blank">AWS-SAP</a>
-      <a class="cert" href="https://www.credly.com/badges/61884d38-f8ea-47d8-9a4e-4f8cf261c444/public_url" target="_blank">CKA</a>
-      <a class="cert" href="https://www.credly.com/badges/3746f024-c3b0-473e-b0cc-808f18075c35/public_url" target="_blank">CKAD</a>
-      <a class="cert" href="https://www.credly.com/badges/d3e952e5-8c80-4f81-8dfb-4ed896cbc677/public_url" target="_blank">KCSA</a>
-      <a class="cert" href="https://www.credly.com/badges/547bdfe4-b9a7-42b1-bdcb-3acc2332f7be/public_url" target="_blank">KCNA</a>
-      <a class="cert" href="https://www.credly.com/badges/e2dee9fd-c02f-40db-83a5-67af7e420994/public_url" target="_blank">TERRAFORM</a>
-    </div>
-
-    <hr>
-
-    <h2>SKILLS</h2>
-    <div class="skills-list">
-      <div class="skill">Kubernetes</div>
-      <div class="skill">Docker</div>
-      <div class="skill">AWS</div>
-      <div class="skill">Terraform</div>
-      <div class="skill">Go</div>
-      <div class="skill">Python</div>
-      <div class="skill">Linux</div>
-      <div class="skill">ArgoCD</div>
-      <div class="skill">Cilium</div>
-      <div class="skill">Helm</div>
-      <div class="skill">GitHub Actions</div>
-      <div class="skill">GitOps</div>
-      <div class="skill">PostgreSQL</div>
-      <div class="skill">Bash</div>
-    </div>
-
-    <hr>
-
-    <h2>PROJECTS</h2>
-
-    <div class="proj-item">
-      <h3><a href="https://kwantumzero.com/" target="_blank">KwantumZero</a></h3>
-      <div class="proj-type">KwantumOS</div>
-      <p class="proj-desc">An OS for learning quantum computing with preinstalled simulators and guided learning paths.</p>
-    </div>
-
-    <div class="proj-item">
-      <h3><a href="https://pypi.org/project/brewbar/" target="_blank">brewbar</a></h3>
-      <div class="proj-type">PyPI Package</div>
-      <p class="proj-desc">A lightweight Python progress-bar library with iterator-based API. MIT licensed, modern packaging via pyproject.toml.</p>
-    </div>
-
-    <hr>
-
-    <h2>COMMUNITY</h2>
-
-    <div class="proj-item">
-      <h3>MCP Developer Summit Bengaluru</h3>
-      <div class="proj-type">2026</div>
-      <p class="proj-desc">Attendee · Model Context Protocol (MCP), AI agents, and developer tooling.</p>
-    </div>
-
-    <div class="proj-item">
-      <h3>KubeCon + CloudNativeCon Mumbai</h3>
-      <div class="proj-type">2026</div>
-      <p class="proj-desc">Attendee · Kubernetes, platform engineering, and the cloud-native ecosystem.</p>
-    </div>
-
-    <hr>
-
-    <div class="contact-section">
-      <h2>CONTACT</h2>
-      <div class="contact-links">
-        <a href="mailto:snharish85@gmail.com">EMAIL</a>
-        <a href="https://github.com/Harish-SN" target="_blank">GITHUB</a>
-        <a href="https://linkedin.com/in/harishsudalaimani" target="_blank">LINKEDIN</a>
-        <a href="https://openprofile.dev/profile/harishsudalaimani" target="_blank">OPENDEV</a>
-        <a href="https://discordapp.com/users/1341650829115002911" target="_blank">DISCORD</a>
+      <div class="terminal-dots">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
       </div>
+
+      <span class="terminal-path">
+        harish@cloud:~/profile
+      </span>
+
+      <span class="terminal-status">
+        ONLINE
+      </span>
+
     </div>
-  </div>
+
+    <div class="content">
+
+      <!-- HEADER -->
+
+      <header>
+
+        <p class="prompt">
+          $ whoami
+        </p>
+
+        <h1>
+          HARISH<br>
+          SUDALAIMANI
+        </h1>
+
+        <p class="subtitle">
+          Cloud & DevOps Engineer<span class="cursor"></span>
+        </p>
+
+        <p class="stack">
+          Kubernetes / AWS / Infrastructure as Code / Platform Engineering
+        </p>
+
+      </header>
+
+
+      <!-- ABOUT -->
+
+      <div class="about">
+
+        <span class="about-label">
+          [ SYSTEM_PROFILE ]
+        </span>
+
+        <p>
+          Kubernetes-focused Cloud & DevOps Engineer building and operating
+          scalable production infrastructure on AWS. Focused on container
+          orchestration, Infrastructure as Code, GitOps, platform engineering,
+          and reliable distributed systems.
+        </p>
+
+      </div>
+
+
+      <!-- EXPERIENCE -->
+
+      <section>
+
+        <h2 class="section-title">
+          EXPERIENCE
+        </h2>
+
+        <div class="exp-item">
+
+          <h3>
+            <a
+              href="https://meetstream.ai/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              MeetStream.ai
+            </a>
+          </h3>
+
+          <div class="exp-meta">
+            Cloud & DevOps Engineer // JUN 2026 — PRESENT
+          </div>
+
+          <p class="exp-desc">
+            Building and managing cloud infrastructure with a focus on
+            scalability, automation, observability, and production reliability.
+          </p>
+
+        </div>
+
+
+        <div class="exp-item">
+
+          <h3>
+            <a
+              href="https://xambook.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Xambook
+            </a>
+          </h3>
+
+          <div class="exp-meta">
+            Cloud & DevOps Engineer // APR 2023 — MAY 2026
+          </div>
+
+          <p class="exp-desc">
+            Built production AWS platforms with Kubernetes, GitHub Actions,
+            and Argo CD. Focused on infrastructure automation, GitOps, and
+            CI/CD pipeline optimization.
+          </p>
+
+        </div>
+
+
+        <div class="exp-item">
+
+          <h3>
+            Freelance
+          </h3>
+
+          <div class="exp-meta">
+            Cloud & DevOps Consultant // MAR 2020 — FEB 2023
+          </div>
+
+          <p class="exp-desc">
+            Provided consulting services for cloud infrastructure,
+            container orchestration, and deployment automation across
+            multiple clients.
+          </p>
+
+        </div>
+
+      </section>
+
+
+      <!-- CERTIFICATIONS -->
+
+      <section>
+
+        <h2 class="section-title">
+          CERTIFICATIONS
+        </h2>
+
+        <div class="tag-list">
+
+          <a
+            class="tag"
+            href="https://www.credly.com/badges/ded4dfbc-ca13-45f9-83f7-ddaffe6eea59/public_url"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            AWS-SAP
+          </a>
+
+          <a
+            class="tag"
+            href="https://www.credly.com/badges/61884d38-f8ea-47d8-9a4e-4f8cf261c444/public_url"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            CKA
+          </a>
+
+          <a
+            class="tag"
+            href="https://www.credly.com/badges/3746f024-c3b0-473e-b0cc-808f18075c35/public_url"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            CKAD
+          </a>
+
+          <a
+            class="tag"
+            href="https://www.credly.com/badges/d3e952e5-8c80-4f81-8dfb-4ed896cbc677/public_url"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            KCSA
+          </a>
+
+          <a
+            class="tag"
+            href="https://www.credly.com/badges/547bdfe4-b9a7-42b1-bdcb-3acc2332f7be/public_url"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            KCNA
+          </a>
+
+          <a
+            class="tag"
+            href="https://www.credly.com/badges/e2dee9fd-c02f-40db-83a5-67af7e420994/public_url"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            TERRAFORM
+          </a>
+
+        </div>
+
+      </section>
+
+
+      <!-- SKILLS -->
+
+      <section>
+
+        <h2 class="section-title">
+          SKILLS
+        </h2>
+
+        <div class="tag-list">
+
+          <span class="tag">Kubernetes</span>
+          <span class="tag">Docker</span>
+          <span class="tag">AWS</span>
+          <span class="tag">Terraform</span>
+          <span class="tag">Go</span>
+          <span class="tag">Python</span>
+          <span class="tag">Linux</span>
+          <span class="tag">Argo CD</span>
+          <span class="tag">Cilium</span>
+          <span class="tag">Helm</span>
+          <span class="tag">GitHub Actions</span>
+          <span class="tag">GitOps</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">Bash</span>
+
+        </div>
+
+      </section>
+
+
+      <!-- PROJECTS -->
+
+      <section>
+
+        <h2 class="section-title">
+          PROJECTS
+        </h2>
+
+        <div class="project-grid">
+
+          <article class="project">
+
+            <span class="project-number">
+              [ 001 ]
+            </span>
+
+            <h3>
+              <a
+                href="https://kwantumzero.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                KwantumZero ↗
+              </a>
+            </h3>
+
+            <div class="project-type">
+              Independent Quantum Technology Publication
+            </div>
+
+            <p class="project-desc">
+              An independent publication exploring quantum computing,
+              quantum hardware, algorithms, industry developments, and
+              the technologies shaping the future of computing.
+            </p>
+
+          </article>
+
+
+          <article class="project">
+
+            <span class="project-number">
+              [ 002 ]
+            </span>
+
+            <h3>
+              <a
+                href="https://pypi.org/project/brewbar/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                brewbar ↗
+              </a>
+            </h3>
+
+            <div class="project-type">
+              Open Source / Python
+            </div>
+
+            <p class="project-desc">
+              A lightweight Python progress-bar library with an
+              iterator-based API, modern packaging, and MIT licensing.
+            </p>
+
+          </article>
+
+        </div>
+
+      </section>
+
+
+      <!-- COMMUNITY -->
+
+      <section>
+
+        <h2 class="section-title">
+          COMMUNITY
+        </h2>
+
+        <div class="community-item">
+
+          <div class="community-year">
+            2026
+          </div>
+
+          <div>
+            <div class="community-name">
+              MCP Developer Summit Bengaluru
+            </div>
+
+            <div class="community-desc">
+              Model Context Protocol / AI agents / Developer tooling
+            </div>
+          </div>
+
+        </div>
+
+
+        <div class="community-item">
+
+          <div class="community-year">
+            2026
+          </div>
+
+          <div>
+            <div class="community-name">
+              KubeCon + CloudNativeCon Mumbai
+            </div>
+
+            <div class="community-desc">
+              Kubernetes / Platform engineering / Cloud-native ecosystem
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- CONTACT -->
+
+      <section>
+
+        <h2 class="section-title">
+          CONNECT
+        </h2>
+
+        <div class="contact-links">
+
+          <a href="mailto:snharish85@gmail.com">
+            EMAIL
+          </a>
+
+          <a
+            href="https://github.com/Harish-SN"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GITHUB
+          </a>
+
+          <a
+            href="https://linkedin.com/in/harishsudalaimani"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            LINKEDIN
+          </a>
+
+          <a
+            href="https://openprofile.dev/profile/harishsudalaimani"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            OPENDEV
+          </a>
+
+          <a
+            href="https://discordapp.com/users/1341650829115002911"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            DISCORD
+          </a>
+
+        </div>
+
+      </section>
+
+
+      <!-- FOOTER -->
+
+      <footer>
+
+        <span>
+          HARISH 2026
+        </span>
+
+        <span>
+          STATUS: <span class="online">● AVAILABLE</span>
+        </span>
+
+      </footer>
+
+    </div>
+
+  </main>
+
 </body>
 </html>
